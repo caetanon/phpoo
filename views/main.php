@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?php echo ROOT_URL ?>assets/css/style.css">
   </head>
   <body>
-    <nav class="navbar navbar-fixed-top">
+    <nav class="navbar">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -26,9 +26,15 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="<?php echo ROOT_URL ?>users/login">Login</a></li>
-            <li><a href="<?php echo ROOT_URL ?>users/register">Register</a></li
+          <?php if(isset($_SESSION['is_logged_in'])) : ?>
+              <li><a href="#">Welcome, <?php echo $_SESSION['user_data']['name'] ?>!</a></li>
+              <li><a href="<?php echo ROOT_URL ?>users/logout">logout</a></li>
+          <?php else : ?>
+              <li><a href="<?php echo ROOT_URL ?>users/login">Login</a></li>
+              <li><a href="<?php echo ROOT_URL ?>users/register">Register</a></li>
+          <?php endif; ?>
           </ul>
+
         </div><!--/.nav-collapse -->
       </div>
     </nav>

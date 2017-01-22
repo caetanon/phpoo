@@ -22,8 +22,6 @@ class Bootstrap
     } else {
       $this->action = $this->request['action'];
     }
-
-
   }
 
   public function createController() {

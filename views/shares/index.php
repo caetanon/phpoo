@@ -1,8 +1,9 @@
 <div class="">
+  <?php if(isset($_SESSION['is_logged_in'])) : ?>
   <p>
     <a class="btn btn-success btn-share" href="<?php echo ROOT_URL; ?>shares/add">Share Something</a>
   </p>
-
+<?php endif; ?>
 
   <?php foreach($viewmodel as $item) : ?>
     <div class="well">

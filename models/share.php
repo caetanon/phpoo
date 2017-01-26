@@ -16,6 +16,10 @@
       $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
       if($post['submit']){
+        if($post['title'] == "" || $post['body'] == "" || $post['link'] == ""){
+          Messages::setMsg('Please fil in all fields', 'error');
+          return;
+        }
         // Insert
         $this->query("INSERT INTO $this->table (title, body, link, user_id) VALUES (:title, :body, :link, :user_id)");
 

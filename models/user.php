@@ -10,6 +10,10 @@
       $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
       if($post['submit']){
+        if($post['name'] == "" || $post['email'] == "" || $post['password'] == ""){
+          Messages::setMsg('Please fil in all fields', 'error');
+          return;
+        }
         // Insert
         $this->query("INSERT INTO $this->table (name, email, password) VALUES (:name, :email, :password)");
 
@@ -46,7 +50,8 @@
           );
           header("Location:".ROOT_URL."shares");
         } else {
-          $_SESSION['is_logged_in'] = false;
+          unset($_SESSION['is_logged_in']);
+          Messages::setMsg('Incorrect login', 'error');
         }
       }
       return;

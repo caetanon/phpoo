@@ -41,7 +41,10 @@
 
     <div class="container">
       <div class="row">
-        <?php require($view); ?>
+        <?php
+          Messages::display();
+          require($view);
+        ?>
       </div>
     </div><!-- /.container -->
   </body>
